@@ -1,0 +1,23 @@
+
+services:
+  postgresdb:
+    container_name: ${DB_HOST}
+    image: postgres:17.4
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresDB:/var/lib/postgresql/data
+  backend:
+    container_name: backfastapi
+    image: d4ndres/back-cashless:laranja
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      FIRST_SUPERUSER: ${FIRST_SUPERUSER}
+      FIRST_SUPERUSER_PASSWORD: ${FIRST_SUPERUSER_PASSWORD}
