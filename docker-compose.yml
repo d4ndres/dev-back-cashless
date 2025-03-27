@@ -14,10 +14,14 @@ services:
       - ./postgresDB:/var/lib/postgresql/data
   backend:
     container_name: backfastapi
-    image: d4ndres/back-cashless:laranja
+    image: d4ndres/back-cashless:ponka
     restart: always
     ports:
       - "8080:8080"
     environment:
       FIRST_SUPERUSER: ${FIRST_SUPERUSER}
       FIRST_SUPERUSER_PASSWORD: ${FIRST_SUPERUSER_PASSWORD}
+      DB_HOST: ${DB_HOST}
+    depends_on:
+      - postgresdb
+    
