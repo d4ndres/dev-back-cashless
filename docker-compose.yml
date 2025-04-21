@@ -14,7 +14,7 @@ services:
       - ./postgresDB:/var/lib/postgresql/data
   backend:
     container_name: backfastapi
-    image: d4ndres/back-cashless:brigadera
+    image: d4ndres/back-cashless:brahma
     restart: always
     ports:
       - "8080:8080"
